@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import javax.xml.crypto.Data;
 
 public class LiveStream {
 
@@ -44,7 +43,9 @@ public class LiveStream {
         else {
             System.out.println("Password mismatch found! please try again");
         }
-
+        actorNameSc.close();
+        pwdSc1.close();
+        pwdSc2.close();
     }
     static void removeActor(){
         System.out.println("added actor's list:");
@@ -69,7 +70,7 @@ public class LiveStream {
         catch(NumberFormatException e){
             System.out.println("Invalid format");
         }
-
+        rmActSc.close();
     }
     static void additionalActorPwdChange(){
         System.out.println("added actor's list:");
@@ -100,6 +101,9 @@ public class LiveStream {
         catch(NumberFormatException e){
             System.out.println("Invalid format");
         }
+        pwdChSc1.close();
+        pwdChSc2.close();
+        actorSc.close();
 
     }
     static void loginDetails(){
@@ -157,6 +161,7 @@ public class LiveStream {
 
                 System.out.println("Invalid format");
             }
+            choiceSc.close();
         }
     }
     static void myUploaderFunc(){
@@ -185,11 +190,13 @@ public class LiveStream {
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid format");
                 }
+                choiceSc.close();
             }
         }
         else{
             System.out.println("No one is allowed to access the uploader's page except me");
         }
+        pwd.close();
     }
 
     static void myAdminFunc(){
@@ -253,11 +260,13 @@ public class LiveStream {
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid format");
                 }
+                choiceSc.close();
             }
         }
         else{
             System.out.println("I am the only admin, you're not allowed to enter");
         }
+        pwd.close();
     }
 
     static void mySpecAdminFunc(int adminIndex){
@@ -294,11 +303,13 @@ public class LiveStream {
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid format");
                 }
+                choiceSc.close();
             }
         }
         else {
             System.out.println("Your password is wrong.If you forget the password, please contact the administrator");
         }
+        pwd.close();
     }
 
     static void exit(){
@@ -307,6 +318,7 @@ public class LiveStream {
         System.out.println("A hacker's programme");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
+        sc.close();
     }
 
     static void myMainFunc(){
@@ -349,6 +361,7 @@ public class LiveStream {
                  
                 System.out.println("Invalid format");
             }
+            actor.close();
         }
         
     }
@@ -388,7 +401,7 @@ interface Admin extends Uploader{
     void editSpec(String person);
 }
 
-class DataBase implements User,Uploader,Admin{
+class DataBase implements User, Admin{
 
     static boolean isStreamingAllowedForUser = true;
     static boolean isStreamingAllowedForSpecialAdmin = true;
@@ -557,6 +570,7 @@ class DataBase implements User,Uploader,Admin{
             manipulationRegistry.add(person+" added "+content+" into the database");
         }
         System.out.println(content +" added successfully");
+        contentSc.close();
     }
     public void viewSpec(){
         Scanner position = new Scanner(System.in);
@@ -574,6 +588,7 @@ class DataBase implements User,Uploader,Admin{
         catch(IndexOutOfBoundsException e){
             System.out.println("  You selected the position number that is not in list");
         }
+        position.close();
     }
 
     public void streamPreparation(int positionNumber){
@@ -647,6 +662,7 @@ class DataBase implements User,Uploader,Admin{
         catch(Exception e){
             System.out.println("Invalid format");
         }
+        sc.close();
     }
 
 
@@ -670,6 +686,7 @@ class DataBase implements User,Uploader,Admin{
         catch(Exception e){
             System.out.println("Invalid format");
         }
+        sc.close();
     }
 
     public void openSpec(String actor, boolean isAllowed){
@@ -729,7 +746,7 @@ class DataBase implements User,Uploader,Admin{
 
             System.out.print("\nPress enter to continue ...");
             position.nextLine();
-
+        position.close();
     }
 
     public void changeAdminMessage(){
@@ -737,6 +754,7 @@ class DataBase implements User,Uploader,Admin{
         System.out.print("Admin message: ");
         adminMessage = sc.nextLine();
         System.out.println("Admin message changed successfully");
+        sc.close();
     }
 
     public void showOnlyAvailableFile(){
@@ -764,6 +782,7 @@ class DataBase implements User,Uploader,Admin{
         catch(IndexOutOfBoundsException e){
             System.out.println("  You selected the position number that is not in list");
         }
+        position.close();
     }
     public void editSpec(String person){
         Scanner position = new Scanner(System.in);
@@ -786,6 +805,8 @@ class DataBase implements User,Uploader,Admin{
         catch(IndexOutOfBoundsException e){
             System.out.println("  You selected the position number that is not in list");
         }
+        position.close();
+        contentSc.close();
     }
     public void deleteAll(){
         name.replaceAll(ignored -> "this content is unavailable");
@@ -824,7 +845,8 @@ class DataBase implements User,Uploader,Admin{
         else {
             System.out.println("Password mismatch found! please try again");
         }
-
+        pwd1.close();
+        pwd2.close();
     }
     public void contentManipulation(){
         System.out.println("\n ------------ Content manipulation details -----------");

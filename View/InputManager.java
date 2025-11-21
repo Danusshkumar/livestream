@@ -29,8 +29,8 @@ public class InputManager {
         return reason;
     }
     
-    public static ArrayList getMovie(){
-        ArrayList res = new ArrayList();
+    public static ArrayList<Object> getMovie(){
+        ArrayList<Object> res = new ArrayList<>();
         res.add(Database.movieCount + 1);
         Printer.enterMovieName();
         res.add(sc.nextLine());

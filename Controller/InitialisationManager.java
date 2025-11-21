@@ -8,13 +8,18 @@ import java.util.*;
 
 public class InitialisationManager {
 
-    static List<String> movieNames = new ArrayList<>(Arrays.asList("Anbe Sivam", "Asuran", "Bagheera", "Cobra",
-            "Dasavathaaram", "Dear Comrade", "Dejavu", "Diary", "Geetha Govindam", "Hey Ram", "Karnan",
-            "KGF Chapter 1", "KGF Chapter 2", "Love Today", "Lucy", "Madarasapattinam", "Naane Varuven",
-            "Pathu Thala", "Ponniyin Selvan", "Pudhupettai", "Rocketry", "Sita Ramam", "Suzhal - The Vortex",
-            "Tamizh Padam 2", "Thiruchitrambalam", "Uttama Villain", "Vaathi", "Vendhu Thanindhathu Kaadu",
-            "Vettaiyaadu Vilaiyaadu 2006", "Viduthalai Part - 1", "Vikram", "Virumandi", "Visaranai",
-            "Maamannan"));
+        static List<String> movieNames = new ArrayList<>(Arrays.asList(
+        "Anbe Sivam", "Asuran", "Bagheera", "Cobra",
+        "Dasavathaaram", "Dear Comrade", "Dejavu", "Diary",
+        "Geetha Govindam", "Hey Ram", "Karnan", "KGF Chapter 1",
+        "KGF Chapter 2", "Love Today", "Lucy", "Madarasapattinam",
+        "Naane Varuven", "Pathu Thala", "Ponniyin Selvan",
+        "Pudhupettai", "Rocketry", "Sita Ramam",
+        "Suzhal - The Vortex", "Tamizh Padam 2", "Thiruchitrambalam",
+        "Uttama Villain", "Vaathi", "Vendhu Thanindhathu Kaadu",
+        "Vettaiyaadu Vilaiyaadu 2006", "Viduthalai Part - 1",
+        "Vikram", "Virumandi"
+        ));
     static List<String> fileLinks = new ArrayList<>(Arrays.asList("E:\\Anbe Sivam (2003).ts", "E:\\Asuran.ts",
             "E:\\Bagheera.ts", "E:\\Cobra.mp4", "E:\\Dasavathaaram.mkv", "E:\\Dear Comrade.mkv",
             "E:\\Dejavu.mp4", "E:\\Diary.mp4", "E:\\Geetha Govindam.mkv", "E:\\Hey Ram.mkv",
@@ -27,7 +32,6 @@ public class InitialisationManager {
             "E:\\Viduthalai Part - 1.mp4", "E:\\Vikram.mp4", "E:\\Virumandi.mkv"));
 
     static public void initDB() {
-        //34
         for (int i = 0; i < movieNames.size(); i++) {
             Database.movies.add(new Movie(i + 1, movieNames.get(i), true, fileLinks.get(i)));
         }

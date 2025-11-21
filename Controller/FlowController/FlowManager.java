@@ -11,7 +11,6 @@ import Model.Database;
 import View.InputManager;
 import View.ListPrinter;
 import View.Printer;
-import Controller.DBController.*;
 
 import java.sql.Connection;
 
@@ -58,8 +57,6 @@ public class FlowManager {
     }
 
     public static void main(String[] args){
-        Connection c = ConnectionProvider.getCon();
-        System.out.println(c);
         initFlow();
     }
 }

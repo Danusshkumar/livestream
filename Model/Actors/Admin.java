@@ -10,7 +10,6 @@ import View.Printer;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 class BasicAdmin extends Person {
 

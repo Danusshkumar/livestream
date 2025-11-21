@@ -1,6 +1,5 @@
 package Model.Actors;
 
-import Controller.AuthManager;
 import Controller.Converter;
 import Controller.GeneralProcessor;
 import Model.DataModel.LoginHistory;
